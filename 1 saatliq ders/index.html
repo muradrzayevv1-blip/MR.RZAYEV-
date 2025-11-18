@@ -1,0 +1,799 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nənəmin Təndiri</title>
+    <!DOCTYPE html>
+<html>
+<head>
+    
+    <script>
+    // ====== SEARCH FUNCTION ======
+    const recipes = [
+        { name: "Real Chicken Cheeseburger", img: "9f39e3073fafd1ff36c44b5cd9b731f3.jpg" },
+        { name: "Salmon Trump", img: "5e5399b85145e4d8f7fc65e449cc058b.jpg" },
+        { name: "Man Face Pancake", img: "c0db86ade5f3edd87939969be9a5d21b.jpg" },
+        { name: "Stolichny Salad", img: "45492f73723a1e22e70a407bc7a06466.jpg" },
+        { name: "Chicken Meatballs with Cream Cheese", img: "e13fd1b84f15caaa9f527cec7a3a1ffe.jpg" },
+        { name: "Fruity Pancake with Orange & Blueberry", img: "6da2199820527067a790ea466ef2461d.jpg" },
+        { name: "Heisenburger", img: "5b4fbf1a951b894f81d80bc9e533e115.jpg" },
+        { name: "Margarita Pizza", img: "bcd1d9a72a1af744a3aa7c1dfbc57971.jpg" },
+        { name: "Pepperoni Pizza", img: "ff2db31dfb4031bf15cb49f57272076d.jpg" },
+        { name: "The Ultimate Hamburger", img: "b6ff6f1069bdb3ec62a6e40a7177a397.jpg" },
+        { name: "French Fries", img: "73a292f97f8f59d6bedfa16285c0777f.jpg" },
+        { name: "Cherry Malt Milkshake Cupcakes", img: "03e676c92b62e7d0973bcbb99b6d74ec.jpg" },
+        { name: "Hot Fried Chicken Wings", img: "download (26).png" },
+        { name: "Healthy Mozzarella Sticks with String Cheese", img: "36b36775314a0820a5360b46e30af199.jpg" }
+    ];
+
+    const searchInput = document.getElementById("searchInput");
+    const searchResults = document.querySelector(".search-results");
+
+    searchInput.addEventListener("input", () => {
+        const query = searchInput.value.toLowerCase();
+        searchResults.innerHTML = "";
+
+        const filtered = recipes.filter(r => r.name.toLowerCase().includes(query));
+
+        filtered.forEach(r => {
+            const card = document.createElement("div");
+            card.classList.add("food-card");
+            card.innerHTML = `
+                <img src="${r.img}" alt="${r.name}">
+                <h3>${r.name}</h3>
+            `;
+            searchResults.appendChild(card);
+        });
+    });
+</script>
+
+    <title>Nənəmin Təndiri</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(120deg, #fff3d6, #ffe5b1, #fff3d6, #ffe5b1);
+            background-size: 400% 400%;
+            animation: gradientBG 18s ease infinite;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% {background-position:0% 50%;}
+            50% {background-position:100% 50%;}
+            100% {background-position:0% 50%;}
+        }
+
+        /* ====== PREMIUM INTRO ====== */
+        #intro {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOut 2s ease forwards;
+            animation-delay: 3s;
+        }
+
+        #intro-logo {
+            font-size: 55px;
+            font-weight: 800;
+            color: #d4af37;
+            letter-spacing: 3px;
+            opacity: 0;
+            animation: introZoom 2.4s ease forwards;
+        }
+
+        @keyframes introZoom {
+            0% {transform: scale(0.3); opacity: 0; filter: blur(20px);}    
+            50% {transform: scale(1.15); opacity: 1; filter: blur(0px);}  
+            100% {transform: scale(1); opacity: 1;} 
+        }
+
+        @keyframes fadeOut {
+            0% {opacity: 1;}
+            100% {opacity: 0; visibility: hidden;}
+        }
+
+        /* ====== NAVBAR ====== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 40px;
+            background: rgba(255,255,255,0.65);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: 300;
+            color: #c28b00;
+            letter-spacing: 1px;
+            font-style: italic;
+        }
+
+        .logo-section img {
+            height: 80px;
+            border-radius: 12px;
+            margin-left: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .menu {
+            display: flex;
+            gap: 25px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            font-size: 18px;
+            color: #333;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: #c28b00;
+        }
+
+        /* ====== CONTENT ====== */
+        .content {
+            margin-top: 40px;
+            padding: 0 40px;
+        }
+
+        /* ====== Categories header ====== */
+        .categories-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .categories-header h1 {
+            font-size: 40px;
+            font-weight: 500;
+            color: #c28b00;
+            position: relative;
+            display: inline-block;
+        }
+
+        .categories-header h1::after {
+            content: '';
+            position: absolute;
+            left: -2px;
+            right: -2px;
+            bottom: 0;
+            height: 6px;
+            background: linear-gradient(90deg, rgba(255,215,0,0.7), rgba(255,140,0,0.7), rgba(255,215,0,0.7));
+            filter: blur(8px);
+            animation: shine 2s infinite;
+            border-radius: 4px;
+        }
+
+        @keyframes shine {
+            0% { left: -50%; right: 50%; }
+            50% { left: 0%; right: 0%; }
+            100% { left: 50%; right: -50%; }
+        }
+
+        /* ====== Category Cards ====== */
+        .container {
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .item img {
+            height: 120px;
+            border-radius: 20px;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: 0.25s;
+        }
+
+        .item:hover img {
+            transform: scale(1.13);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+        }
+
+        /* ========== PARTICLES ========== */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    
+/* ====== OPENING ANIMATION ====== */
+#opening-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeOut 2.2s ease 3s forwards;
+}
+
+.opening-text {
+  color: #d4af37;
+  font-size: 70px;
+  font-family: 'Georgia', serif;
+  letter-spacing: 5px;
+  opacity: 0;
+  transform: scale(0.5);
+  animation: logoReveal 3s ease forwards;
+}
+
+@keyframes logoReveal {
+  0% {opacity: 0; transform: scale(0.5) translateY(40px);}  
+  50% {opacity: 1; transform: scale(1.1) translateY(0);} 
+  100% {transform: scale(1);} 
+}
+
+@keyframes fadeOut {
+  0% {opacity: 1;} 
+  100% {opacity: 0; visibility: hidden;} 
+}
+
+/* ====== STAR BACKGROUND ====== */
+.smallstars, .stars2, .stars3 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: repeat;
+  background-size: contain;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.stars {background-image: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%); animation: moveStars 50s linear infinite;} 
+.stars2 {background-image: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%); animation: moveStars 90s linear infinite;} 
+.stars3 {background-image: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%); animation: moveStars 140s linear infinite;} 
+
+@keyframes moveStars {
+  from {transform: translateY(0);} 
+  to {transform: translateY(-2000px);} 
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ====== OPENING EFFECT ====== -->
+<div id="opening-screen">
+  <div class="opening-text">Nənəmin Təndiri</div>
+</div>
+
+<!-- ====== STAR BACKGROUND ====== -->
+<div class="stars"></div><div class="stars2"></div><div class="stars3"></div>
+
+<div id="intro">
+    <div id="intro-logo">Nənəmin Təndirinə Xoş Gəlmişsiniz</div>
+</div>
+
+<div id="particles-js"></div>
+
+<!-- Navbar and content remains same (kept for brevity) -->
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<script>
+particlesJS('particles-js', {
+  particles: {
+    number: { value: 55 },
+    size: { value: 3 },
+    move: { speed: 1 },
+    line_linked: { enable: true, distance: 150, opacity: 0.25 }
+  }
+});
+</script>
+
+</body>
+</html>
+<!-- Premium Cinematic Opening Animation -->
+<style>
+  #opening-logo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeOut 2.2s ease 3.2s forwards;
+  }
+
+  #opening-logo .opening-text {
+    font-size: 70px;
+    font-weight: 800;
+    letter-spacing: 8px;
+    color: white;
+    opacity: 0;
+    transform: scale(0.5);
+    animation: logoReveal 2.5s ease forwards;
+  }
+
+  @keyframes logoReveal {
+    0% { opacity: 0; transform: scale(0.4); filter: blur(20px); }
+    40% { opacity: 1; transform: scale(1.1); filter: blur(0); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; visibility: hidden; }
+  }
+</style>
+
+
+</div>
+
+
+
+    <style>
+        body {
+            margin: 0;
+            background: linear-gradient(to bottom, #fff7e6, #ffe4b8);
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* ====== HEADER ====== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 40px;
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: 300;
+            color: #c28b00;
+            letter-spacing: 1px;
+            font-style: italic;
+        }
+
+        .logo-section img {
+            height: 80px;
+            border-radius: 12px;
+            margin-left: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .menu {
+            display: flex;
+            gap: 25px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            font-size: 18px;
+            color: #333;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: #c28b00;
+        }
+
+        /* ====== CONTENT ====== */
+        .content {
+            margin-top: 40px;
+            padding: 0 40px;
+        }
+
+        /* ====== Categories header ====== */
+        .categories-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .categories-header h1 {
+            font-size: 40px;
+            font-weight: 500;
+            color: #c28b00;
+            position: relative;
+            display: inline-block;
+        }
+
+        .categories-header h1::after {
+            content: '';
+            position: absolute;
+            left: -2px;
+            right: -2px;
+            bottom: 0;
+            height: 6px;
+            background: linear-gradient(90deg, rgba(255,215,0,0.7), rgba(255,140,0,0.7), rgba(255,215,0,0.7));
+            filter: blur(8px);
+            animation: shine 2s infinite;
+            border-radius: 4px;
+        }
+
+        @keyframes shine {
+            0% { left: -50%; right: 50%; }
+            50% { left: 0%; right: 0%; }
+            100% { left: 50%; right: -50%; }
+        }
+
+        .view-all {
+            font-size: 16px;
+            color: #c28b00;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* ====== Category Cards ====== */
+        .container {
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .item {
+            text-align: center;
+            position: relative;
+        }
+
+        .item img {
+            height: 120px;
+            border-radius: 20px;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: 0.25s;
+        }
+
+        .item:hover img {
+            transform: scale(1.13);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+        }
+
+        .item h4 {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        /* ====== Slogan ====== */
+        .slogan {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 26px;
+            color: #444;
+            font-weight: 600;
+        }
+
+        .sub-slogan {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 20px;
+            color: #7a5f00;
+            font-weight: 500;
+        }
+
+        /* ====== Popular Recipes ====== */
+        .food-card {
+            width: 260px;
+            background: white;
+            border-radius: 22px;
+            padding: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            text-align: center;
+            position: relative;
+            transition: 0.25s;
+            cursor: default;
+        }
+
+        .food-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+        }
+
+        .food-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 18px;
+        }
+
+        .food-card h3 {
+            margin-top: 15px;
+            font-size: 20px;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .food-card .heart {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            font-size: 26px;
+            cursor: pointer;
+            color: #aaa;
+            transition: 0.2s;
+        }
+
+        .food-card .heart.liked {
+            color: red;
+            transform: scale(1.3);
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ====== NAVBAR ====== -->
+    <div class="navbar">
+        <div class="logo-section">
+            <div class="logo">Nənəmin Təndiri</div>
+            <img src="download (25).png" alt="Logo">
+        </div>
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="#">Recipes</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+            <a href="#">About Us</a>
+        </div>
+    </div>
+
+    <!-- ====== CONTENT ====== -->
+    <div class="content">
+
+        <!-- ====== CATEGORIES ====== -->
+        <div class="categories-header">
+            <h1>Categories</h1>
+            <a href="all-categories.html" class="view-all">View All Categories</a>
+        </div>
+
+        <div class="container">
+            <div class="item">
+                <img src="cb9e8978a284d201fe01f506c0d11d46.jpg">
+                <h4>Breakfast</h4>
+            </div>
+            <div class="item">
+                <img src="cceb22727e6d38a5bfa0deb073191c23.jpg">
+                <h4>Vegan</h4>
+            </div>
+            <div class="item">
+                <img src="d8418812b99a0f4485dd479e4c702815.jpg">
+                <h4>Meat</h4>
+            </div>
+            <div class="item">
+                <img src="0425c903b8c902b3b078eb9d723c4d71.jpg">
+                <h4>Dessert</h4>
+            </div>
+            <div class="item">
+                <img src="760fe03ec6dea02a729d41cac0db0aad.jpg">
+                <h4>Lunch</h4>
+            </div>
+            <div class="item">
+                <img src="ba538c71d6bb6257a8c887acc389d4f6.jpg">
+                <h4>Chocolate</h4>
+            </div>
+        </div>
+
+        <!-- ====== SLOGAN ====== -->
+        <div class="slogan">Simple and tasty recipes</div>
+        <div class="sub-slogan">Hindistan Sokak Lezzetlerinin tam organik yeməkləri</div>
+
+    </div>
+
+    <!-- ====== POPULAR RECIPES ====== -->
+    <div style="padding: 50px 40px;">
+
+        <h2 style="font-size: 34px; font-weight: 900; color: #c28b00; text-align: center; margin-bottom: 40px;">
+            Popular Recipes
+        </h2>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center;">
+
+            <div class="food-card">
+                <span class="heart">♡</span>
+                <img src="9f39e3073fafd1ff36c44b5cd9b731f3.jpg">
+                <h3>Real Chicken Cheeseburger</h3>
+            </div>
+
+            <div class="food-card">
+                <span class="heart">♡</span>
+                <img src="5e5399b85145e4d8f7fc65e449cc058b.jpg">
+                <h3>Salmon Trump</h3>
+            </div>
+
+            <div class="food-card">
+                <span class="heart">♡</span>
+                <img src="c0db86ade5f3edd87939969be9a5d21b.jpg">
+                <h3>Man Face Pancake</h3>
+            </div>
+
+            <div class="food-card">
+                <span class="heart">♡</span>
+                <img src="45492f73723a1e22e70a407bc7a06466.jpg">
+                <h3>Stolichny Salad</h3>
+            </div>
+
+            <div class="food-card">
+                <span class="heart">♡</span>
+                <img src="e13fd1b84f15caaa9f527cec7a3a1ffe.jpg">
+                <h3>Chicken Meatballs with Cream Cheese</h3>
+            </div>
+
+            <div class="food-card">
+                <span class="heart">♡</span>
+                <img src="6da2199820527067a790ea466ef2461d.jpg">
+                <h3>Fruity Pancake with Orange & Blueberry</h3>
+            </div>
+
+            <div class="food-card">
+                <span class="heart">♡</span>
+                <img src="5b4fbf1a951b894f81d80bc9e533e115.jpg">
+                <h3>Heisenburger</h3>
+            </div>
+
+             <div class="food-card">
+                <span class="heart">♡</span>
+                <img src="bcd1d9a72a1af744a3aa7c1dfbc57971.jpg">
+                <h3>Margarita Pizza</h3>
+            </div>
+
+                <div class="food-card">
+                <span class="heart">♡</span>
+                <img src="ff2db31dfb4031bf15cb49f57272076d.jpg">
+                <h3>Pepperoni Pizza</h3>
+            </div>
+
+            <div class="food-card">
+                <span class="heart">♡</span>
+                <img src="b6ff6f1069bdb3ec62a6e40a7177a397.jpg">
+                <h3>The Ultimate Hamburger</h3>
+            </div>
+
+            <div class="food-card">
+                <span class="heart">♡</span>
+                <img src="73a292f97f8f59d6bedfa16285c0777f.jpg">
+                <h3>French Fries</h3>
+            </div>
+
+            <div class="food-card">
+                <span class="heart">♡</span>
+                <img src="03e676c92b62e7d0973bcbb99b6d74ec.jpg">
+                <h3>Cherry Malt Milkshake Cupcakes</h3>
+            </div>
+
+            <div class="food-card">
+                <span class="heart">♡</span>
+                <img src="download (26).png">
+                <h3>Hot Fried Chicken Wings</h3>
+            </div>
+
+            <div class="food-card">
+                <span class="heart">♡</span>
+                <img src="36b36775314a0820a5360b46e30af199.jpg">
+                <h3>Healthy Mozzarella Sticks with String Cheese</h3>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Like only for Popular Recipes
+        document.querySelectorAll(".food-card .heart").forEach(h => {
+            h.addEventListener("click", () => {
+                h.classList.toggle("liked");
+            });
+        });
+    </script>
+    <!-- ====== NEWSLETTER ====== -->
+<div style="display: flex; justify-content: center; margin: 80px 0;">
+    <div style="background: #fff7e6; padding: 30px 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 600px; width: 100%; text-align: center;">
+        <h2 style="margin: 0 0 20px 0; font-size: 28px; color: #c28b00;">Deliciousness to your inbox</h2>
+        <div style="display: flex; gap: 10px; justify-content: center; align-items: center; flex-wrap: wrap;">
+            <input type="email" placeholder="Your email address..." style="flex: 1; padding: 12px 15px; border: 2px solid #c28b00; border-radius: 10px; font-size: 16px; outline: none;">
+            <button style="padding: 12px 25px; background-color: #c28b00; color: white; border: none; border-radius: 10px; font-size: 16px; cursor: pointer;">Subscribe</button>
+        </div>
+    </div>
+</div>
+<!-- ====== SOCIAL ICONS FOOTER (BOTTOM OF PAGE) ====== -->
+<div style="
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 30px 40px; /* sağdan 20px → 40px edərək ikonları içəri çəkdim */
+    margin-top: 40px;
+    box-sizing: border-box;
+">
+    <div style="display: flex; gap: 18px;">
+        
+        <!-- Facebook -->
+        <a href="#" style="text-decoration: none;">
+            <svg width="20" height="20" fill="black" viewBox="0 0 24 24">
+                <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.2l-.4 3h-1.8v7A10 10 0 0 0 22 12"/>
+            </svg>
+        </a>
+
+        <!-- Twitter -->
+        <a href="#" style="text-decoration: none;">
+            <svg width="20" height="20" fill="black" viewBox="0 0 24 24">
+                <path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.3 4.3 0 0 0 1.88-2.37 8.59 8.59 0 0 1-2.72 1.04A4.28 4.28 0 0 0 16 4a4.28 4.28 0 0 0-4.28 4.28c0 .34.04.68.11 1A12.15 12.15 0 0 1 3.15 5.1a4.28 4.28 0 0 0 1.33 5.71A4.2 4.2 0 0 1 2.8 10v.05a4.28 4.28 0 0 0 3.44 4.2c-.44.12-.9.18-1.38.18-.33 0-.66-.03-.97-.1a4.29 4.29 0 0 0 4 2.98A8.6 8.6 0 0 1 2 19.54 12.14 12.14 0 0 0 8.29 21.5c7.55 0 11.68-6.26 11.68-11.68v-.53A8.18 8.18 0 0 0 22.46 6z"/>
+            </svg>
+        </a>
+
+        <!-- Instagram -->
+        <a href="#" style="text-decoration: none;">
+            <svg width="20" height="20" fill="black" viewBox="0 0 24 24">
+                <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 7.4A2.9 2.9 0 1 1 14.9 12 2.9 2.9 0 0 1 12 14.9zm4.6-8.9a1.1 1.1 0 1 0 1.1 1.1 1.1 1.1 0 0 0-1.1-1.1z"/>
+            </svg>
+        </a>
+
+    </div>
+</div>
+<!-- ====== SIGNATURE (BOTTOM CENTER) ====== -->
+<div style="
+    width: 100%;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 40px;
+">
+    <p style="
+        font-size: 22px;
+        font-weight: 700;
+        color: #d4af37; /* Premium gold */
+        letter-spacing: 1.5px;
+        font-family: 'Georgia', serif;
+    ">
+       (2025) Created by MR.RZAYEV #44
+    </p>
+</div>
+
+</body>
+</html>
+

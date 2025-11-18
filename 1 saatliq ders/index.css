@@ -1,0 +1,146 @@
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #ffffff;
+}
+/* ====== VIDEO INTRO ====== */
+#video-intro {
+  position: fixed;
+  top:0; left:0;
+  width:100%;
+  height:100vh;
+  background: radial-gradient(circle at center, #000 0%, #111 100%);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  z-index:9999;
+  animation: fadeOutIntro 1s ease 4.3s forwards;
+}
+
+/* Qızılı yazı */
+.video-title {
+  position:absolute;
+  font-family: 'Georgia', serif;
+  font-size:70px;
+  color:#d4af37;
+  letter-spacing:6px;
+  opacity:0;
+  transform:scale(0.6);
+  animation: titleReveal 2.5s ease 0.5s forwards;
+}
+
+/* Yuxarıdan fade-in qızılı yazı */
+@keyframes titleReveal {
+  0% {opacity:0; transform:scale(0.5) translateY(40px); filter:blur(15px);}
+  50% {opacity:1; transform:scale(1.15) translateY(0);}
+  100% {transform:scale(1);}
+}
+
+/* Intro-u yox etmək */
+@keyframes fadeOutIntro {
+  0% {opacity:1;}
+  100% {opacity:0; visibility:hidden;}
+}
+
+/* ====== ANIMATED FIRE ====== */
+.fire-animation {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:200px;
+  background: radial-gradient(ellipse at bottom, #ff6b00 0%, transparent 70%);
+  filter: blur(25px);
+  animation: fireFlicker 1s infinite alternate;
+}
+
+@keyframes fireFlicker {
+  0% {transform: scaleX(1) scaleY(1);}
+  50% {transform: scaleX(1.1) scaleY(1.05);}
+  100% {transform: scaleX(0.9) scaleY(0.95);}
+}
+
+/* ====== SMOKE ====== */
+.smoke-animation {
+  position:absolute;
+  bottom:100px;
+  width:100%;
+  height:300px;
+  background: radial-gradient(ellipse at bottom, rgba(200,200,200,0.2) 0%, transparent 80%);
+  filter: blur(20px);
+  animation: smokeMove 6s linear infinite;
+}
+
+@keyframes smokeMove {
+  0% {transform: translateY(0) rotate(0deg);}
+  100% {transform: translateY(-150px) rotate(15deg);}
+}
+
+/* ====== STARS ====== */
+.stars-animation {
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background-image: radial-gradient(white 1px, transparent 1px);
+  background-size: 3px 3px;
+  animation: starsMove 50s linear infinite;
+  opacity:0.7;
+}
+
+@keyframes starsMove {
+  0% {background-position:0 0;}
+  100% {background-position:0 -1000px;}
+}
+
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.navbar nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: black;
+}
+
+/* CATEGORIES SECTION */
+.categories {
+    width: 100%;
+    padding: 40px;
+}
+
+.cat-list {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.cat-item {
+    text-align: center;
+}
+
+/* TITLE SECTION */
+.title-section {
+    text-align: center;
+    padding: 30px 0;
+}
+
+/* RECIPE CARDS */
+.recipes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding: 40px;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 15px;
+}
+
